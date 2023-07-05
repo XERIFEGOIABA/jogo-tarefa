@@ -23,4 +23,9 @@ public class menu : MonoBehaviour
     {
         SceneManager.LoadScene(nomeCena);
     }
+
+    public void QuitGame()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
 }
