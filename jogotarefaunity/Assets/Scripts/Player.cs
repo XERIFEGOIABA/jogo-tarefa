@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
 
 
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +22,11 @@ public class Player : MonoBehaviour
     }
 
 
-
     // Update is called once per frame
     void Update()
     {
         rig.velocity = new Vector2(speed, rig.velocity.y);
         rig.velocity = new Vector2(Input.GetAxis("horizontal") * speed, rig.velocity.y);
-
-
 
         if (Input.GetKeyDown(KeyCode.A) && transform.localScale.x > 0)
         {
