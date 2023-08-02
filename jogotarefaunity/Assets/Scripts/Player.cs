@@ -10,30 +10,38 @@ public class Player : MonoBehaviour
     private Vector3 posInicial;
     //variavel velocidade
     public float speed;
-    //variavel forca pulo
-    public float JumpForce;
-    //controlar o pulo
-    public bool isJumping;
-    private Vector3 posInicial;
-    public Animator animator;
-    private bool isMoving;
-    public static float health = 1;
-    public GameObject gameOverPanel;
 
 
 
-  // Start is called before the first frame update
+
+    // Start is called before the first frame update
     void Start()
     {
-        rig = GetComponent<RigidBody2D>();
-        posInicial = new Vector3(0, 0, 0);
-        transfom.position = posInicial;
-
+        rig = GetComponent<Rigidbody2D>();
+        posInicial = new Vector3(-7f, -1f, 0f);
+        transform.position = posInicial;
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        rig.velocity = new Vector2(speed, rig.velocity.y);
+        rig.velocity = new Vector2(Input.GetAxis("horizontal") * speed, rig.velocity.y);
+
+
+
+        if (Input.GetKeyDown(KeyCode.A) && transform.localScale.x > 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            Debug.Log("Tecla A foi Pressionada");
+        }
+        //verifica se a tecla D foi pressionada
+        if (Input.GetKeyDown(KeyCode.D) && transform.localScale.x < 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            Debug.Log("Tecla D foi Pressionada");
+        }
     }
 }
